@@ -35,10 +35,10 @@ resetForm.addEventListener("submit", function(event) {
     // Check if the username exists in your system (this could be done with an API call)
     if (username) {
         // Update the password (in this example, updating the local storage)
-        const storedUser = JSON.parse(localStorage.getItem("user"));
+        const storedUser = JSON.parse(localStorage.getItem(username));
         if (storedUser && storedUser.username === username) {
             storedUser.password = newPassword;
-            localStorage.setItem("user", JSON.stringify(storedUser));
+            localStorage.setItem(storedUser.username, JSON.stringify(storedUser));
             alert("Password reset successfully!");
             // Redirect to login page after password reset
             window.location.href = "login.html";

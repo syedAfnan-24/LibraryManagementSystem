@@ -1,6 +1,6 @@
 // userdetails.js
 document.addEventListener("DOMContentLoaded", function() {
-    const storedUser = JSON.parse(localStorage.getItem("name"));
+    const storedUser = JSON.parse(localStorage.getItem("afnan"));
 
     if (storedUser) {
         const userDetailsDiv = document.getElementById("userDetails");
@@ -18,9 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
             // Redirect to the login page after logout
             window.location.href = "login.html";
         });
-    } else {
-        // Redirect to login page if user data is not found in local storage
-        window.location.href = "login.html";
     }
 });
 
