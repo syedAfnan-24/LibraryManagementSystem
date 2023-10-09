@@ -19,7 +19,7 @@ signupForm.addEventListener("submit", function(event) {
     };
 
     // Store the user object in local storage
-    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem(user.username, JSON.stringify(user));
 
     // Optionally, you can redirect to a different page after signup
     // window.location.href = "success.html";

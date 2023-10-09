@@ -1,6 +1,6 @@
 // userdetails.js
 document.addEventListener("DOMContentLoaded", function() {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedUser = JSON.parse(localStorage.getItem("name"));
 
     if (storedUser) {
         const userDetailsDiv = document.getElementById("userDetails");

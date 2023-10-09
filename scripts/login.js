@@ -7,8 +7,8 @@ const resetForm = document.getElementById("resetForm");
 loginForm.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    const enteredUsername = document.getElementById("username").value;
+    const enteredUsername = document.getElementById("username").value;    
+    const storedUser = JSON.parse(localStorage.getItem(enteredUsername));
     const enteredPassword = document.getElementById("password").value;
 
     if (storedUser && storedUser.username === enteredUsername && storedUser.password === enteredPassword) {
