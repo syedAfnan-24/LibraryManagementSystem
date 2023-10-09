@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const logoutBtn = document.getElementById("logoutBtn");
         logoutBtn.addEventListener("click", function() {
             // Remove user data from local storage
-            localStorage.removeItem("user");
+            // localStorage.removeItem("user");
 
             // Redirect to the login page after logout
             window.location.href = "login.html";
