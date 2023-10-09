@@ -1,6 +1,6 @@
 // userdetails.js
 document.addEventListener("DOMContentLoaded", function() {
-    const storedUser = JSON.parse(localStorage.getItem("afnan"));
+    const storedUser = JSON.parse(localStorage.getItem(sessionStorage.getItem("user")));
 
     if (storedUser) {
         const userDetailsDiv = document.getElementById("userDetails");
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const logoutBtn = document.getElementById("logoutBtn");
         logoutBtn.addEventListener("click", function() {
             // Remove user data from local storage
-            // localStorage.removeItem("user");
+            sessionStorage.removeItem("user");
 
             // Redirect to the login page after logout
             window.location.href = "login.html";
