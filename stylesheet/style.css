@@ -22,6 +22,15 @@ body {
     z-index: 1000; /* Ensure the navbar appears above other elements */
 }
 
+#nav-link{
+    text-decoration: none;
+    color: white;
+    margin: 20px;
+}
+
+#nav-link:hover{
+    color: #007BFF;
+}
 .logo {
     color: #fff;
     font-size: 1.5rem;
@@ -135,7 +144,7 @@ body {
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background-color: #007BFF;
 }
 
 /* features  */
@@ -189,4 +198,82 @@ body {
     /* position: fixed; */
     bottom: 0;
     width: 100%;
+}
+
+/* login page css  */
+
+.container {
+    max-width: 400px;
+    background-color: #fff;
+    padding: 70px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    text-align: left;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"],input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #034d9c;
+}
+
+#resetPasswordForm {
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+p {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+#forgotPasswordLink {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+#forgotPasswordLink:hover {
+    text-decoration: underline;
 }

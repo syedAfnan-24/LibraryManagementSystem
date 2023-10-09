@@ -5,17 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Details</title>
-    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="stylesheet/style.css">
 </head>
 <body>
+    <nav class="navbar">
+        <div class="logo"><a id="nav-link" href="index.html">Library</a></div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="menu">
+            <button id="logoutBtn">Logout</button>
+        </div>
+    </nav>
     <div class="container">
         <h2>User Details</h2>
         <div id="userDetails"></div>
-        <button id="logoutBtn">Logout</button>
     </div>
 
     <h2 id="hello"></h2>
-    <h1>Library Management System</h1>
+    <center>    <h1>Books</h1></center>
     <div class="container">
         <label for="bookTitle">Title:</label>
         <input type="text" id="bookTitle" placeholder="Enter the title of Book">
@@ -31,5 +41,7 @@
 
     
     <script src="scripts/userdetails.js"></script>
+    <!-- script for ui -->
+    <script src="stylesheet/script.js"></script>
 </body>
 </html>
