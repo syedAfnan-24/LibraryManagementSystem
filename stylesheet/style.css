@@ -312,7 +312,7 @@ input[type="number"] {
 }
 
 button {
-    background-color: #4caf50;
+    background-color: #007BFF;
     color: white;
     border: none;
     padding: 12px 20px;
@@ -323,7 +323,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #01366d;
 }
 
 ul {
