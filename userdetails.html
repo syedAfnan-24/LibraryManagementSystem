@@ -1,0 +1,34 @@
+<!-- userdetails.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+</head>
+<body>
+    <div class="container">
+        <h2>User Details</h2>
+        <div id="userDetails"></div>
+        <button id="logoutBtn">Logout</button>
+    </div>
+
+    <h2 id="hello"></h2>
+    <h1>Library Management System</h1>
+    <div class="container">
+        <label for="bookTitle">Title:</label>
+        <input type="text" id="bookTitle" placeholder="Enter the title of Book">
+        <label for="author">Author:</label>
+        <input type="text" id="author" placeholder="Enter the Author's Name">
+        <label for="year">Year:</label>
+        <input type="number" id="year" placeholder="Enter the year">
+        <button onclick="addBook()">Add Book</button>
+
+        <h2>Books</h2>
+        <ul id="bookList"></ul>
+    </div>
+
+    <script src="userdetails.js"></script>
+</body>
+</html>
