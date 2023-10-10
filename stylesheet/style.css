@@ -106,7 +106,7 @@ body {
 
 
 .hero {
-    background-image: url('/images/heroImg.png'); /* Replace with your image URL */
+    background-image: url('images/heroImg.png'); /* Replace with your image URL */
     background-size: cover;
     background-position: center;
     height: 85vh;
