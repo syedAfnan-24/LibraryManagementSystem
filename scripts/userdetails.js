@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
             sessionStorage.removeItem("user");
 
             // Redirect to the login page after logout
-            window.location.href = "login.html";
+            window.location.href = "index.html";
         });
     }
 });
