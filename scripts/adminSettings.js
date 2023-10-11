@@ -82,18 +82,6 @@ function saveBooksToLocalStorage() {
 }
 
 
-function renderBooksForClient() {
-    const bookList = document.getElementById('bookList');
-    bookList.innerHTML = '';
-
-    books.forEach(book => {
-        const li = document.createElement('li');
-        li.textContent = `${book.title} by ${book.author} Published in year (${book.year})`;
-
-        bookList.appendChild(li);
-    });
-}
-
 // Initial rendering of books
 renderBooks();
 
