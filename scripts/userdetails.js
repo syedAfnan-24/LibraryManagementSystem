@@ -27,14 +27,12 @@ let books = JSON.parse(localStorage.getItem('books')) || [];
 
 // Function to edit a book by ID
 function editBook(id) {
-    const editedTitle = prompt('Enter new title:');
     const editedAuthor = prompt('Enter new author:');
     const editedYear = prompt('Enter new year:');
 
-    if (editedTitle && editedAuthor && editedYear) {
+    if (editedAuthor && editedYear) {
         books = books.map(book => {
-            if (book.id === id) {
-                book.title = editedTitle;
+            if (book.title === id) {
                 book.author = editedAuthor;
                 book.year = editedYear;
             }
@@ -57,12 +55,12 @@ function renderBooks() {
         // Edit button for each book
         const editButton = document.createElement('button');
         editButton.textContent = 'Edit';
-        editButton.onclick = () => editBook(book.id);
+        editButton.onclick = () => editBook(book.title);
         
         // Delete button for each book
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
-        deleteButton.onclick = () => deleteBook(book.id);
+        deleteButton.onclick = () => deleteBook(book.title);
         
         li.appendChild(editButton);
         li.appendChild(deleteButton);
@@ -78,7 +76,6 @@ function addBook() {
 
     if (title && author && year) {
         const newBook = {
-            id: Date.now(),
             title: title,
             author: author,
             year: year,
@@ -95,7 +92,7 @@ function addBook() {
 }
 // Function to delete a book by ID
 function deleteBook(id) {
-    books = books.filter(book => book.id !== id);
+    books = books.filter(book => book.title !== id);
     saveBooksToLocalStorage();
     renderBooks();
 }
