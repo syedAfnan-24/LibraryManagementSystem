@@ -19,12 +19,8 @@
             <button id="logoutBtn">Logout</button>
         </div>
     </nav>
-    <div class="container-user">
-        <h2>User Details</h2>
-        <div id="userDetails"></div>
-    </div>
 
-    <!-- <h2 id="hello"></h2> -->
+    
     <center><h1>Books</h1></center>
     <div class="container-books">
         <label for="bookTitle">Title:</label>
@@ -37,10 +33,22 @@
 
         <h2>Books</h2>
         <ul id="bookList"></ul>
+        <h2 id="hello"></h2>
     </div>
 
     
     <script src="scripts/adminSettings.js"></script>
+    <script>
+        document.getElementById("hello").innerHTML = "Hello! "+sessionStorage.getItem("admin")
+        const logoutBtn = document.getElementById("logoutBtn");
+        logoutBtn.addEventListener("click", function() {
+            // Remove user data from local storage
+            sessionStorage.removeItem("admin");
+
+            // Redirect to the login page after logout
+            window.location.href = "index.html";
+        });
+    </script>
     <!-- script for ui -->
     <script src="stylesheet/script.js"></script>
 </body>
