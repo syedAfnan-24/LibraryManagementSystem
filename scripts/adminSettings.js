@@ -1,25 +1,4 @@
-// userdetails.js
-document.addEventListener("DOMContentLoaded", function() {
-    const storedUser = JSON.parse(localStorage.getItem(sessionStorage.getItem("user")));
 
-    if (storedUser) {
-        const userDetailsDiv = document.getElementById("userDetails");
-        userDetailsDiv.innerHTML = `
-            <p><strong>Username:</strong> ${storedUser.username}</p>
-            <p><strong>Branch:</strong> ${storedUser.branch}</p>
-            <p><strong>University Number (USN):</strong> ${storedUser.usn}</p>
-            <p><strong>Semester:</strong> ${storedUser.semester}</p>
-        `;
-        const logoutBtn = document.getElementById("logoutBtn");
-        logoutBtn.addEventListener("click", function() {
-            // Remove user data from local storage
-            sessionStorage.removeItem("user");
-
-            // Redirect to the login page after logout
-            window.location.href = "index.html";
-        });
-    }
-});
 
 
 // Retrieve books from localStorage or initialize an empty array
