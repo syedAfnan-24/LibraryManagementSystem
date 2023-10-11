@@ -14,7 +14,7 @@ loginForm.addEventListener("submit", function(event) {
     if (storedUser && storedUser.username === enteredUsername && storedUser.password === enteredPassword) {
         // Redirect to user details page after successful login
         sessionStorage.setItem("user",storedUser.username)
-        window.location.href = "userdetails.html";
+        window.location.href = "clientHome.html";
     } else {
         alert("Invalid username or password. Please try again.");
         // Optionally, you can clear the input fields after unsuccessful login attempt
