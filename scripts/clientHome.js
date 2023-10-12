@@ -1,5 +1,5 @@
 // client Details
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const storedUser = JSON.parse(localStorage.getItem(sessionStorage.getItem("user")));
 
     if (storedUser) {
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <p><strong>Semester:</strong> ${storedUser.semester}</p>
         `;
         const logoutBtn = document.getElementById("logoutBtn");
-        logoutBtn.addEventListener("click", function() {
+        logoutBtn.addEventListener("click", function () {
             // Remove user data from local storage
             sessionStorage.removeItem("user");
 
@@ -42,12 +42,38 @@ function displayLocalStorageList() {
             const newItemElement = document.createElement("p");
             // Set the text content of the paragraph element with item details
             newItemElement.textContent = 'Title: ' + item.title + ', Author: ' + item.author + ', Year: ' + item.year;
+
+            //adding a borrow request option
+            // borrowBook(item.title)
+            // Create a new button element
+            const borrowButton = document.createElement("button");
+            // Set the button text
+            borrowButton.textContent = "Borrow";
+            // Add a click event listener to the button, calling borrowBook function with item.title
+            borrowButton.addEventListener("click", function () {
+                borrowBook(item.title);
+            });
+
             // Append the paragraph element to the display element
             displayElement.appendChild(newItemElement);
+            displayElement.appendChild(borrowButton);
         });
     } else {
         console.log('No list found in Local Storage.');
     }
+}
+let existingBorrows = JSON.parse(localStorage.getItem("borrow")) || [];
+function borrowBook(bookTitle) {
+    const storedUser = JSON.parse(localStorage.getItem(sessionStorage.getItem("user")));
+    let x = prompt("enter the number of days you want to borrow this book for")
+    const newBorrow = {
+        name: storedUser.username,
+        book: bookTitle,
+        days: x
+    }
+    existingBorrows.push(newBorrow);
+
+    localStorage.setItem("borrow", JSON.stringify(existingBorrows))
 }
 
 // Call the function to display the local storage list
