@@ -3,8 +3,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
-
 body {
     font-family: Arial, sans-serif;
 }
@@ -243,7 +243,7 @@ button {
     background-color: #007BFF;
     color: white;
     border: none;
-    padding: 12px 20px;
+    padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
@@ -336,14 +336,67 @@ li {
     margin-bottom: 10px;
 }
 
+
+/* user details */
 #userDetails {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 50px;
+    /* text-align: center; */
 }
 
+#userDetails p {
+    margin: 10px 0;
+}
+
+#userDetails strong {
+    font-weight: bold;
+}
+
+
 #hello {
+    text-align: center;
+    margin-top: 75px;
     font-size: 24px;
     color: #333;
     margin-bottom: 20px;
 }
+
+/* edit button  */
+#edit-button {
+    background-color: #04aa44;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    /* Additional styles if needed */
+}
+
+#edit-button:hover{
+    background-color: #04cd51;
+}
+
+#delete-button{
+    background-color: #aa0404;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#delete-button:hover{
+    background-color: #eb0202;
+}
+#book-item{
+    font-weight: bold;
+    font-size: larger;
+}
+
+  

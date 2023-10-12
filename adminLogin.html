@@ -3,14 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet/style.css">
     <title>Document</title>
 </head>
 <body>
-    <form id="adminLogin">
-        <input type="text" id="aname">
-        <input type="text" id="apass">
-        <button type="submit">login</button>
-    </form>
+    <nav class="navbar">
+        <div class="logo"><a id="nav-link" href="index.html">Library</a></div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="menu">
+            <a id="nav-link" href="index.html">Home</a>
+            <a id="nav-link" href="adminSignup.html">Admin SignUp</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h2>Admin Login</h2>
+        <form id="adminLogin">
+            <label for="aname">Admin Name</label>
+            <input type="text" id="aname" required>
+            <label for="apass">Password</label>
+            <input type="text" id="apass" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
     <p>not registered yet? <a href="adminSignup.html">signup now</a></p>
     <script src="scripts/adminLogin.js"></script>
 </body>

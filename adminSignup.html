@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet/style.css">
     <title>Document</title>
 </head>
+
 <body>
-    <form id="adminSignup">
-        <input type="text" placeholder="Name" id="aname">
-        <input type="text" placeholder="password" id="apass">
-        <button type="submit">Sign up</button>
-    </form>
+    <nav class="navbar">
+        <div class="logo"><a id="nav-link" href="index.html">Library</a></div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="menu">
+            <a id="nav-link" href="index.html">Home</a>
+            <a id="nav-link" href="adminLogin.html">Admin Login</a>
+        </div>
+    </nav>
+    <div class="container">
+        <form id="adminSignup">
+            <label for="aname">Admin Name</label>
+            <input type="text" id="aname" placeholder="Enter Name">
+            <label for="apass">Password</label>
+            <input type="text" id="apass" placeholder="Enter Password">
+            <button type="submit">Sign up</button>
+        </form>
+    </div>
     <script src="scripts/adminSignup.js"></script>
 </body>
+
 </html>

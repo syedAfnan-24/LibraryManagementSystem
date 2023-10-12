@@ -1,4 +1,8 @@
 
+// icons 
+// const svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+//   <!-- Your SVG Path(s) Here -->
+// </svg>`;
 
 
 // Retrieve books from localStorage or initialize an empty array
@@ -29,18 +33,25 @@ function renderBooks() {
 
     books.forEach(book => {
         const li = document.createElement('li');
+        li.id = "book-item"
         li.textContent = `${book.title} by ${book.author} Published in year (${book.year})`;
 
         // Edit button for each book
+        const breakTag = document.createElement('br');
         const editButton = document.createElement('button');
         editButton.textContent = 'Edit';
+        editButton.id = 'edit-button';
+        // editButton.innerHTML = svgIcon;
+        // editButton.classList.add('edit-button');
         editButton.onclick = () => editBook(book.title);
         
         // Delete button for each book
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
+        deleteButton.id = 'delete-button';
         deleteButton.onclick = () => deleteBook(book.title);
         
+        li.appendChild(breakTag)
         li.appendChild(editButton);
         li.appendChild(deleteButton);
         bookList.appendChild(li);
