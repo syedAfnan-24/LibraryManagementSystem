@@ -111,13 +111,38 @@ function borrowedList() {
     const storedUser = JSON.parse(localStorage.getItem(sessionStorage.getItem("user")));
     const borrowData = JSON.parse(localStorage.getItem('borrow'));
 
-    // Iterate through the borrowData and display books associated with "syed liyaquath afnan"
+    // Find the element where you want to display the table
+    const tableContainer = document.getElementById('table-container');
+
+    // Create an HTML table
+    const table = document.createElement('table');
+    const tableHeader = table.createTHead();
+    const headerRow = tableHeader.insertRow(0);
+    const headers = ['Name', 'Book', 'Days'];
+    
+    // Populate table headers
+    headers.forEach(headerText => {
+        const th = document.createElement('th');
+        const text = document.createTextNode(headerText);
+        th.appendChild(text);
+        headerRow.appendChild(th);
+    });
+
+    // Populate table with data
     borrowData.forEach(item => {
         if (item.name === storedUser.username) {
-            console.log(`Book: ${item.book}`);
+            const row = table.insertRow();
+            const cell1 = row.insertCell();
+            const cell2 = row.insertCell();
+            const cell3 = row.insertCell();
+            cell1.textContent = item.name;
+            cell2.textContent = item.book;
+            cell3.textContent = item.days;
         }
     });
 
+    // Append the table to the container element
+    tableContainer.appendChild(table);
 }
 
 // Call the function to display the local storage list
