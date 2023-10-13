@@ -156,7 +156,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 50px 0;
-    background-color: #f4f4f4;
+    background-color: #373737;
 }
 
 .feature-item {
@@ -164,10 +164,13 @@ body {
     max-width: 300px;
     margin: 20px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #515151;
+    border-radius: 5px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
-
+.feature-item:hover{
+    box-shadow: 0px 0px 20px 0px #007BFF;
+}
 .feature-icon {
     font-size: 36px;
     margin-bottom: 20px;
@@ -177,12 +180,12 @@ body {
 .feature-title {
     font-size: 24px;
     margin-bottom: 10px;
-    color: #333;
+    color: #f7f7f7;
 }
 
 .feature-description {
     font-size: 16px;
-    color: #666;
+    color: #c5c5c5;
 }
 
 @media (max-width: 768px) {
@@ -193,7 +196,7 @@ body {
 
 /* footer section  */
 .footer {
-    background-color: #333;
+    background-color: #8f8f8f;
     color: #fff;
     text-align: center;
     padding: 20px;
