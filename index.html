@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet/style.css">
+    <!-- scroll animations  -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <title>Library</title>
 </head>
 <body>
@@ -23,7 +26,7 @@
     
     <!-- hero section  -->
     <header class="hero">
-        <div class="hero-content">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="5000">
             <h1 style="color: white;">Library Management System</h1>
             <p style="color: white;">Find the books you need</p>
             <a href="#tab" class="btn">About Us</a>
@@ -32,18 +35,18 @@
 
     <!-- features section -->
     <div class="features-container" id="tab">
-        <div class="feature-item">
+        <div class="feature-item" data-aos="fade-up" data-aos-duration="5000">
             <div class="feature-icon">&#128218;</div>
             <div class="feature-title">Vast Collection of Books</div>
             <div class="feature-description">Explore our extensive collection of books, ranging from classics to contemporary bestsellers.</div>
         </div>
         
-        <div class="feature-item">
+        <div class="feature-item" data-aos="fade-up" data-aos-duration="5000">
             <div class="feature-icon">&#128214;</div>
             <div class="feature-title">Digital Magazines</div>
             <div class="feature-description">Enjoy popular magazines in digital format, covering various topics and interests.</div>
         </div>
-        <div class="feature-item">
+        <div class="feature-item" data-aos="fade-up" data-aos-duration="5000">
             <div class="feature-icon">&#127912;</div>
             <div class="feature-title">Events and Workshops</div>
             <div class="feature-description">Participate in book readings, author signings, and educational workshops held at the library.</div>
@@ -57,5 +60,10 @@
     </div>
     <!-- nav bar script -->
     <script src="stylesheet/script.js"></script>    
+    <!-- scroll animations -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
 </body>
 </html>
