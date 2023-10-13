@@ -98,28 +98,6 @@ function addBook() {
     }
 }
 
-// Function to add a new book
-function addBook() {
-    const title = document.getElementById('bookTitle').value;
-    const author = document.getElementById('author').value;
-    const year = document.getElementById('year').value;
-
-    if (title && author && year) {
-        const newBook = {
-            title: title,
-            author: author,
-            year: year,
-        };
-
-        books.push(newBook);
-        saveBooksToLocalStorage();
-        renderBooks();
-        // Clear input fields after adding a book
-        document.getElementById('bookTitle').value = '';
-        document.getElementById('author').value = '';
-        document.getElementById('year').value = '';
-    }
-}
 // Function to delete a book by ID
 function deleteBook(id) {
     books = books.filter(book => book.title !== id);
