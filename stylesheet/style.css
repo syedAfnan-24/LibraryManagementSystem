@@ -399,4 +399,31 @@ li {
     font-size: larger;
 }
 
-  
+#message{
+    background-color: rgba(0, 128, 0, 0.55);
+    padding: 20px;
+    text-align: center;
+    color: white;
+    margin: 0 15% 0 15%;
+    border-radius: 5px;
+    display: none;
+}
+/* table to display list of books available */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}

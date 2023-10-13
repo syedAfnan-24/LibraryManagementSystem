@@ -36,32 +36,52 @@ function displayLocalStorageList() {
         // Clear previous content
         displayElement.innerHTML = '';
 
-        // Iterate through the list and display each item in the HTML element
-        list.forEach(item => {
-            // Create a new paragraph element for each item
-            const newItemElement = document.createElement("p");
-            // Set the text content of the paragraph element with item details
-            newItemElement.textContent = 'Title: ' + item.title + ', Author: ' + item.author + ', Year: ' + item.year;
+        // Create a table element
+        const table = document.createElement('table');
+        // Create a header row for the table
+        const headerRow = table.insertRow();
+        const headers = ['Title', 'Author', 'Year', 'Actions'];
 
-            //adding a borrow request option
-            // borrowBook(item.title)
-            // Create a new button element
+        // Iterate through the headers and create <th> elements
+        headers.forEach(headerText => {
+            const header = document.createElement('th');
+            header.textContent = headerText;
+            headerRow.appendChild(header);
+        });
+
+
+        // Iterate through the list and display each item in the table
+        list.forEach(item => {
+            // Create a new row for each item
+            const row = table.insertRow();
+
+            // Create cells for each property (title, author, year)
+            const titleCell = row.insertCell();
+            titleCell.textContent = item.title;
+
+            const authorCell = row.insertCell();
+            authorCell.textContent = item.author;
+
+            const yearCell = row.insertCell();
+            yearCell.textContent = item.year;
+
+            // Create a cell for the Borrow button
+            const borrowCell = row.insertCell();
             const borrowButton = document.createElement("button");
-            // Set the button text
             borrowButton.textContent = "Borrow";
-            // Add a click event listener to the button, calling borrowBook function with item.title
             borrowButton.addEventListener("click", function () {
                 borrowBook(item.title);
             });
-
-            // Append the paragraph element to the display element
-            displayElement.appendChild(newItemElement);
-            displayElement.appendChild(borrowButton);
+            borrowCell.appendChild(borrowButton);
         });
+
+        // Append the table to the display element
+        displayElement.appendChild(table);
     } else {
         console.log('No list found in Local Storage.');
     }
 }
+
 let existingBorrows = JSON.parse(localStorage.getItem("borrow")) || [];
 function borrowBook(bookTitle) {
     const storedUser = JSON.parse(localStorage.getItem(sessionStorage.getItem("user")));
@@ -74,6 +94,8 @@ function borrowBook(bookTitle) {
     existingBorrows.push(newBorrow);
 
     localStorage.setItem("borrow", JSON.stringify(existingBorrows))
+    document.getElementById("message").style.display = 'block';
+    document.getElementById("message").innerHTML = "borrowed "+bookTitle+" for "+x+" days"
 }
 
 // Call the function to display the local storage list
