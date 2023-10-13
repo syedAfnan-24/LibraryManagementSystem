@@ -131,8 +131,63 @@ function deleteBook(id) {
 function saveBooksToLocalStorage() {
     localStorage.setItem('books', JSON.stringify(books));
 }
+function displayLocalStorageList() {
+    // Retrieve the list from local storage
+    const storedList = localStorage.getItem("borrow");
+
+    // Check if the list exists in local storage
+    if (storedList) {
+        // Parse the stored list from JSON to JavaScript array of objects
+        const list = JSON.parse(storedList);
+
+        // Get the display element from the HTML
+        const displayElement = document.getElementById("borrowList");
+
+        // Clear previous content
+        displayElement.innerHTML = '';
+
+        // Create a table element
+        const table = document.createElement('table');
+        // Create a header row for the table
+        const headerRow = table.insertRow();
+        const headers = ['Student Name', 'Book', 'Days Borrowed'];
+
+        // Iterate through the headers and create <th> elements
+        headers.forEach(headerText => {
+            const header = document.createElement('th');
+            header.textContent = headerText;
+            headerRow.appendChild(header);
+        });
+
+
+        // Iterate through the list and display each item in the table
+        list.forEach(item => {
+            // Create a new row for each item
+            const row = table.insertRow();
+
+            // Create cells for each property (title, author, year)
+            const titleCell = row.insertCell();
+            titleCell.textContent = item.name;
+
+            const authorCell = row.insertCell();
+            authorCell.textContent = item.book;
+
+            const yearCell = row.insertCell();
+            yearCell.textContent = item.days;
+
+        });
+
+        // Append the table to the display element
+        displayElement.appendChild(table);
+    } else {
+        console.log('No list found in Local Storage.');
+    }
+}
 
 
 // Initial rendering of books
 renderBooks();
+
+//Initial rendering of students who have borrowed book
+displayLocalStorageList();
 
