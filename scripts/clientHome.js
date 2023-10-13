@@ -90,17 +90,36 @@ let existingBorrows = JSON.parse(localStorage.getItem("borrow")) || [];
 function borrowBook(bookTitle) {
     const storedUser = JSON.parse(localStorage.getItem(sessionStorage.getItem("user")));
     let x = prompt("enter the number of days you want to borrow this book for")
-    const newBorrow = {
-        name: storedUser.username,
-        book: bookTitle,
-        days: x
+    if(x!=""){
+        const newBorrow = {
+            name: storedUser.username,
+            book: bookTitle,
+            days: x
+        }
+        existingBorrows.push(newBorrow);
+    
+        localStorage.setItem("borrow", JSON.stringify(existingBorrows))
+        document.getElementById("message").style.display = 'block';
+        document.getElementById("message").innerHTML = "borrowed " + bookTitle + " for " + x + " days"
+    }else{
+        alert("book can't be borrowed without mention number of days")
     }
-    existingBorrows.push(newBorrow);
+}
 
-    localStorage.setItem("borrow", JSON.stringify(existingBorrows))
-    document.getElementById("message").style.display = 'block';
-    document.getElementById("message").innerHTML = "borrowed "+bookTitle+" for "+x+" days"
+function borrowedList() {
+    // Get the JSON data from localStorage and parse it
+    const storedUser = JSON.parse(localStorage.getItem(sessionStorage.getItem("user")));
+    const borrowData = JSON.parse(localStorage.getItem('borrow'));
+
+    // Iterate through the borrowData and display books associated with "syed liyaquath afnan"
+    borrowData.forEach(item => {
+        if (item.name === storedUser.username) {
+            console.log(`Book: ${item.book}`);
+        }
+    });
+
 }
 
 // Call the function to display the local storage list
 displayLocalStorageList();
+borrowedList();
