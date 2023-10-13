@@ -69,8 +69,12 @@ function displayLocalStorageList() {
             const borrowCell = row.insertCell();
             const borrowButton = document.createElement("button");
             borrowButton.textContent = "Borrow";
+            borrowButton.style.backgroundColor = "blue"
             borrowButton.addEventListener("click", function () {
                 borrowBook(item.title);
+                borrowButton.style.backgroundColor = "green"
+                borrowButton.textContent = "Borrowed"
+                borrowButton.disabled = true;
             });
             borrowCell.appendChild(borrowButton);
         });
