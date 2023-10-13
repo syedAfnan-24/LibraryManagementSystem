@@ -1,12 +1,14 @@
 <!-- userdetails.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Details</title>
     <link rel="stylesheet" href="stylesheet/style.css">
 </head>
+
 <body>
     <nav class="navbar">
         <div class="logo"><a id="nav-link" href="index.html">Library</a></div>
@@ -20,9 +22,9 @@
         </div>
     </nav>
 
-    
+
     <h2 id="hello"></h2>
-    
+
     <div class="container-books">
         <h1>Add Books</h1>
         <label for="bookTitle">Title:</label>
@@ -33,19 +35,28 @@
         <input type="number" id="year" placeholder="Enter the year">
         <button onclick="addBook()">Add Book</button>
 
-        
-        <h2 style="margin-top: 20px;">List of Books</h2>
-        <ul id="bookList"></ul>
-        <h2 style="margin-top: 20px;">List of Students Borrowed the book</h2>
-        <ul id="borrowList"></ul>
+        <br>
+        <div class="btn-sec">
+            <button onclick="book()" id="filter-btn">book list</button>
+            <button onclick="borrow()" id="filter-btn">Borrowed List</button>
+        </div>
+        <div id="booklist-display">
+            <h2 style="margin-top: 20px;">List of Books</h2>
+            <ul id="bookList"></ul>
+        </div>
+        <div id="borrow-display">
+            <h2 style="margin-top: 20px;">List of Students Borrowed the book</h2>
+            <ul id="borrowList"></ul>
+        </div>
+
     </div>
 
-    
+
     <script src="scripts/adminSettings.js"></script>
     <script>
-        document.getElementById("hello").innerHTML = "Hello! "+sessionStorage.getItem("admin")
+        document.getElementById("hello").innerHTML = "Hello! " + sessionStorage.getItem("admin")
         const logoutBtn = document.getElementById("logoutBtn");
-        logoutBtn.addEventListener("click", function() {
+        logoutBtn.addEventListener("click", function () {
             // Remove user data from local storage
             sessionStorage.removeItem("admin");
 
@@ -53,7 +64,18 @@
             window.location.href = "index.html";
         });
     </script>
+    <script>
+        function book() {
+            document.getElementById("booklist-display").style.display = 'block';
+            document.getElementById("borrow-display").style.display = 'none';
+        }
+        function borrow() {
+            document.getElementById("booklist-display").style.display = 'none';
+            document.getElementById("borrow-display").style.display = 'block';
+        }
+    </script>
     <!-- script for ui -->
     <script src="stylesheet/script.js"></script>
 </body>
+
 </html>

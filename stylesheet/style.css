@@ -440,3 +440,28 @@ table {
   #borrow-btn:hover{
     background-color: #03c7ea;
   }
+
+  /* displaying and hiding list on click */
+  #booklist-display{
+    display: none;
+  }
+  #borrow-display{
+    display: none;
+  }
+  .btn-sec{
+    background-color: rgba(232, 232, 232, 0.607);
+    margin: 15px 10% 0 10%;
+  }
+  #filter-btn{
+    background-color: transparent;
+    color: black;
+    margin: 5px;
+    padding: 5px;
+    border: none;
+    border-radius: 0px;
+    border-bottom: 3px solid red;
+  }
+  #filter-btn:hover{
+    border-bottom: 2px solid rgb(0, 132, 255);
+    transition: 0.5s;
+  }
