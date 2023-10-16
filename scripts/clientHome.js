@@ -89,18 +89,20 @@ function displayLocalStorageList() {
 let existingBorrows = JSON.parse(localStorage.getItem("borrow")) || [];
 function borrowBook(bookTitle) {
     const storedUser = JSON.parse(localStorage.getItem(sessionStorage.getItem("user")));
-    let x = prompt("enter the number of days you want to borrow this book for")
+    let x = prompt("enter the number of days you want to borrow this book for");
+    let bDate = prompt("enter the borrow date")
     if(x!=""){
         const newBorrow = {
             name: storedUser.username,
             book: bookTitle,
-            days: x
+            days: x,
+            borrow: bDate
         }
         existingBorrows.push(newBorrow);
     
         localStorage.setItem("borrow", JSON.stringify(existingBorrows))
         document.getElementById("message").style.display = 'block';
-        document.getElementById("message").innerHTML = "borrowed " + bookTitle + " for " + x + " days"
+        document.getElementById("message").innerHTML = "borrowed " + bookTitle + " for " + x + " days, on "+bDate
     }else{
         alert("book can't be borrowed without mention number of days")
     }
@@ -118,7 +120,7 @@ function borrowedList() {
     const table = document.createElement('table');
     const tableHeader = table.createTHead();
     const headerRow = tableHeader.insertRow(0);
-    const headers = ['Name', 'Book', 'Days'];
+    const headers = ['Name', 'Book', 'Days', 'Borrowed Date'];
     
     // Populate table headers
     headers.forEach(headerText => {
@@ -135,9 +137,11 @@ function borrowedList() {
             const cell1 = row.insertCell();
             const cell2 = row.insertCell();
             const cell3 = row.insertCell();
+            const cell4 = row.insertCell();
             cell1.textContent = item.name;
             cell2.textContent = item.book;
             cell3.textContent = item.days;
+            cell4.textContent = item.borrow;
         }
     });
 

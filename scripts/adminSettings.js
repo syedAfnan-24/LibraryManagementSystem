@@ -35,12 +35,14 @@ function renderBooks() {
     const headerRow = table.insertRow();
     const headers = ['Title', 'Author', 'Year', 'Update', 'Delete'];
 
+    //adding table heading for each cell
     headers.forEach(headerText => {
         const headerCell = document.createElement('th');
         headerCell.textContent = headerText;
         headerRow.appendChild(headerCell);
     });
 
+    // entering all books data in each row in the table
     books.forEach(book => {
         const row = table.insertRow();
 
@@ -58,14 +60,14 @@ function renderBooks() {
         const editCell = row.insertCell();
         const editButton = document.createElement('button');
         editButton.textContent = 'Edit';
-        editButton.id = 'edit-button';
+        editButton.id = 'edit-button';  //creating id to add css
         editButton.onclick = () => editBook(book.title);
         editCell.appendChild(editButton);
 
         const deleteCell = row.insertCell();
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
-        deleteButton.id = 'delete-button';
+        deleteButton.id = 'delete-button'; //creating id to add css
         deleteButton.onclick = () => deleteBook(book.title);
         deleteCell.appendChild(deleteButton);
     });
@@ -128,7 +130,7 @@ function displayLocalStorageList() {
         const table = document.createElement('table');
         // Create a header row for the table
         const headerRow = table.insertRow();
-        const headers = ['Student Name', 'Book', 'Days Borrowed'];
+        const headers = ['Student Name', 'Book', 'Days Borrowed', 'Borrowed Date'];
 
         // Iterate through the headers and create <th> elements
         headers.forEach(headerText => {
@@ -152,6 +154,9 @@ function displayLocalStorageList() {
 
             const yearCell = row.insertCell();
             yearCell.textContent = item.days;
+
+            const dateCell = row.insertCell();
+            dateCell.textContent = item.borrow;
 
         });
 
