@@ -168,9 +168,47 @@ function displayLocalStorageList() {
     }
 }
 
+//printing fine and returned books list
+function returnedBooksList() {
+    const storedUser = JSON.parse(localStorage.getItem(sessionStorage.getItem("user")));
+    const fineList = JSON.parse(localStorage.getItem("return"))
+    const tableContainer = document.getElementById("returnedBookstbl");
+
+    const table = document.createElement('table')
+    const tableHeader = table.createTHead();
+    const headerRow = tableHeader.insertRow(0);
+    const headers = ['Student Name','Book', 'Borrowed Date', 'return Date', 'Fine Amount'];
+
+    headers.forEach(headerText => {
+        const th = document.createElement('th');
+        const text = document.createTextNode(headerText);
+        th.appendChild(text);
+        headerRow.appendChild(th);
+    });
+    fineList.forEach(item => {
+        const row = table.insertRow();
+        const cell1 = row.insertCell();
+        const cell2 = row.insertCell();
+        const cell3 = row.insertCell();
+        const cell4 = row.insertCell();
+        const cell5 = row.insertCell();
+        cell1.textContent = item.name;
+        cell2.textContent = item.book;
+        cell3.textContent = item.borrowDate;
+        cell4.textContent = item.returnDate;
+        cell5.textContent = item.fine;
+
+
+    });
+
+    // Append the table to the container element
+    tableContainer.appendChild(table);
+
+}
 
 // Initial rendering of books
 renderBooks();
 
 //Initial rendering of students who have borrowed book
 displayLocalStorageList();
+returnedBooksList();

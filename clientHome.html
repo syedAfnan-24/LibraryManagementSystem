@@ -26,18 +26,24 @@
         <div class="btn-sec">
             <button onclick="book()" id="filter-btn">book list</button>
             <button onclick="borrow()" id="filter-btn">Borrowed List</button>
+            <button onclick="fine()" id="filter-btn">Returned Books</button>
         </div>
         <div id="booklist-display">
-            <h3>List of Books Available</h3>
+            <h3 style="margin-top: 20px;">List of Books Available</h3>
             <p id="message"></p>
             <p id="display"></p>
         </div>
 
 
         <div id="borrow-display">
-            <h3>List of books you have borrowed</h3>
+            <h3 style="margin-top: 20px;">List of books you have borrowed</h3>
             <p id="return-message"></p>
             <div id="table-container"></div>
+        </div>
+
+        <div id="return-display">
+            <h3 style="margin-top: 20px;">List of Returned book and Fine amount</h3>
+            <div id="returnedBookstbl"></div>
         </div>
 
     </div>
@@ -47,10 +53,17 @@
         function book() {
             document.getElementById("booklist-display").style.display = 'block';
             document.getElementById("borrow-display").style.display = 'none';
+            document.getElementById("return-display").style.display = 'none';
         }
         function borrow() {
             document.getElementById("booklist-display").style.display = 'none';
             document.getElementById("borrow-display").style.display = 'block';
+            document.getElementById("return-display").style.display = 'none';
+        }
+        function fine() {
+            document.getElementById("booklist-display").style.display = 'none';
+            document.getElementById("borrow-display").style.display = 'none';
+            document.getElementById("return-display").style.display = 'block';
         }
     </script>
     <!-- script for ui -->

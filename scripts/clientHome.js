@@ -156,6 +156,45 @@ function borrowedList() {
     tableContainer.appendChild(table);
 }
 
+//for printing return books list
+function returnedBooksList() {
+    const storedUser = JSON.parse(localStorage.getItem(sessionStorage.getItem("user")));
+    const fineList = JSON.parse(localStorage.getItem("return"))
+    const tableContainer = document.getElementById("returnedBookstbl");
+
+    const table = document.createElement('table')
+    const tableHeader = table.createTHead();
+    const headerRow = tableHeader.insertRow(0);
+    const headers = ['Student Name','Book', 'Borrowed Date', 'return Date', 'Fine Amount'];
+
+    headers.forEach(headerText => {
+        const th = document.createElement('th');
+        const text = document.createTextNode(headerText);
+        th.appendChild(text);
+        headerRow.appendChild(th);
+    });
+    fineList.forEach(item => {
+        if (item.name === storedUser.username) {
+            const row = table.insertRow();
+            const cell1 = row.insertCell();
+            const cell2 = row.insertCell();
+            const cell3 = row.insertCell();
+            const cell4 = row.insertCell();
+            const cell5 = row.insertCell();
+            cell1.textContent = item.name;
+            cell2.textContent = item.book;
+            cell3.textContent = item.borrowDate;
+            cell4.textContent = item.returnDate;
+            cell5.textContent = item.fine;
+
+        }
+    });
+
+    // Append the table to the container element
+    tableContainer.appendChild(table);
+
+}
+
 let returnedBooks = JSON.parse(localStorage.getItem("return")) || [];
 //return book function
 function returnbook(name,book,borrowDate,days) {
@@ -190,6 +229,7 @@ function returnbook(name,book,borrowDate,days) {
         // Update localStorage with the modified data
         localStorage.setItem("borrow", JSON.stringify(existingBorrows));
         document.getElementById("return-message").innerHTML = `${name} has returned ' ${book} ', and has a fine of amount  ${fine}`;
+        document.getElementById("return-message").style.display = "block"
         console.log(`Record for ${name} and book ${book} has been removed.`);
     } else {
         console.log(`Record for ${name} and book ${book} not found.`);
@@ -215,3 +255,4 @@ function getDaysDifference(borrowDate, returnDate) {
 // Call the function to display the local storage list
 displayLocalStorageList();
 borrowedList();
+returnedBooksList();

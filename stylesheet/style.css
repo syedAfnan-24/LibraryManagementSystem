@@ -412,6 +412,15 @@ li {
     border-radius: 5px;
     display: none;
 }
+#return-message{
+    background-color: rgba(0, 128, 0, 0.55);
+    padding: 20px;
+    text-align: center;
+    color: white;
+    margin: 0 15% 0 15%;
+    border-radius: 5px;
+    display: none;
+}
 /* table to display list of books available */
 table {
     border-collapse: collapse;
@@ -450,6 +459,9 @@ table {
     display: none;
   }
   #borrow-display{
+    display: none;
+  }
+  #return-display{
     display: none;
   }
   .btn-sec{
