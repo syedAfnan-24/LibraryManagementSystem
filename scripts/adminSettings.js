@@ -168,4 +168,3 @@ renderBooks();
 
 //Initial rendering of students who have borrowed book
 displayLocalStorageList();
-
