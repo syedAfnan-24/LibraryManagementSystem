@@ -56,7 +56,7 @@ function renderBooks() {
         const yearCell = row.insertCell();
         yearCell.textContent = book.year;
 
-        // Create cells for edit and delete buttons
+        // Create cell for edit button
         const editCell = row.insertCell();
         const editButton = document.createElement('button');
         editButton.textContent = 'Edit';
@@ -64,6 +64,7 @@ function renderBooks() {
         editButton.onclick = () => editBook(book.title);
         editCell.appendChild(editButton);
 
+        // Create cells for delete button
         const deleteCell = row.insertCell();
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
@@ -130,7 +131,7 @@ function displayLocalStorageList() {
         const table = document.createElement('table');
         // Create a header row for the table
         const headerRow = table.insertRow();
-        const headers = ['Student Name', 'Book', 'Days Borrowed', 'Borrowed Date'];
+        const headers = ['Student Name', 'Book', 'Borrowed for', 'Borrowed Date'];
 
         // Iterate through the headers and create <th> elements
         headers.forEach(headerText => {
@@ -153,7 +154,7 @@ function displayLocalStorageList() {
             authorCell.textContent = item.book;
 
             const yearCell = row.insertCell();
-            yearCell.textContent = item.days;
+            yearCell.textContent = item.days +" days";
 
             const dateCell = row.insertCell();
             dateCell.textContent = item.borrow;

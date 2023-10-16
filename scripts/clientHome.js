@@ -90,7 +90,7 @@ let existingBorrows = JSON.parse(localStorage.getItem("borrow")) || [];
 function borrowBook(bookTitle) {
     const storedUser = JSON.parse(localStorage.getItem(sessionStorage.getItem("user")));
     let x = prompt("enter the number of days you want to borrow this book for");
-    let bDate = prompt("enter the borrow date")
+    let bDate = prompt("enter the borrow date in YYYY-MM-DD format")
     if(x!=""){
         const newBorrow = {
             name: storedUser.username,
@@ -120,7 +120,7 @@ function borrowedList() {
     const table = document.createElement('table');
     const tableHeader = table.createTHead();
     const headerRow = tableHeader.insertRow(0);
-    const headers = ['Name', 'Book', 'Days', 'Borrowed Date'];
+    const headers = ['Name', 'Book', 'Days', 'Borrowed Date', 'Return'];
     
     // Populate table headers
     headers.forEach(headerText => {
@@ -138,10 +138,17 @@ function borrowedList() {
             const cell2 = row.insertCell();
             const cell3 = row.insertCell();
             const cell4 = row.insertCell();
+            const cell5 = row.insertCell(); //return book button
             cell1.textContent = item.name;
             cell2.textContent = item.book;
             cell3.textContent = item.days;
             cell4.textContent = item.borrow;
+
+            const returnBookBtn = document.createElement('button')
+            returnBookBtn.textContent = "Return"
+            returnBookBtn.onclick = () => returnbook(item.name,item.book,item.borrow,item.days)
+            cell5.appendChild(returnBookBtn)
+
         }
     });
 
@@ -149,6 +156,59 @@ function borrowedList() {
     tableContainer.appendChild(table);
 }
 
+let returnedBooks = JSON.parse(localStorage.getItem("return")) || [];
+//return book function
+function returnbook(name,book,borrowDate,days) {
+    const returnDate = prompt("enter the date of return in YYYY-MM-DD format")
+    let fine
+    if(getDaysDifference((borrowDate,returnDate) > days)){
+        fine = getDaysDifference(borrowDate,returnDate)*5
+    }else{
+        fine = 0
+    }
+    // console.log(fine)
+    const newReturn = {
+        name: name,
+        book: book,
+        borrowDate: borrowDate,
+        returnDate: returnDate,
+        fine: fine
+    }
+    returnedBooks.push(newReturn)
+    localStorage.setItem("return",JSON.stringify(returnedBooks))
+
+    //when book is returned the record from "borrow" local storage should be deleted
+    const indexToRemove = existingBorrows.findIndex(record => record.name === name && record.book === book);
+
+    // If the record is found, remove it
+    if (indexToRemove !== -1) {
+        existingBorrows.splice(indexToRemove, 1);
+
+        // Update localStorage with the modified data
+        localStorage.setItem("borrow", JSON.stringify(existingBorrows));
+
+        console.log(`Record for ${name} and book ${book} has been removed.`);
+    } else {
+        console.log(`Record for ${name} and book ${book} not found.`);
+    }
+
+}
+
+// Function to calculate the difference in days between two dates
+function getDaysDifference(borrowDate, returnDate) {
+    // Convert the dates to Date objects
+    const startDate = new Date(borrowDate);
+    const endDate = new Date(returnDate);
+
+    // Calculate the time difference in milliseconds
+    const timeDifference = endDate - startDate;
+
+    // Convert the time difference from milliseconds to days
+    const daysDifference = timeDifference / (1000 * 60 * 60 * 24);
+
+    // Return the absolute value of the difference to handle cases where returnDate is before borrowDate
+    return Math.abs(daysDifference);
+}
 // Call the function to display the local storage list
 displayLocalStorageList();
 borrowedList();
