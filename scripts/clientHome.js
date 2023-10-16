@@ -160,9 +160,12 @@ let returnedBooks = JSON.parse(localStorage.getItem("return")) || [];
 //return book function
 function returnbook(name,book,borrowDate,days) {
     const returnDate = prompt("enter the date of return in YYYY-MM-DD format")
+    // let fine = getDaysDifference(borrowDate,returnDate)*5
     let fine
-    if(getDaysDifference((borrowDate,returnDate) > days)){
-        fine = getDaysDifference(borrowDate,returnDate)*5
+    let x = getDaysDifference(borrowDate,returnDate)    
+    console.log(x)
+    if(x > days){
+        fine = (x - days)*5
     }else{
         fine = 0
     }
@@ -186,7 +189,7 @@ function returnbook(name,book,borrowDate,days) {
 
         // Update localStorage with the modified data
         localStorage.setItem("borrow", JSON.stringify(existingBorrows));
-
+        document.getElementById("return-message").innerHTML = `${name} has returned ' ${book} ', and has a fine of amount  ${fine}`;
         console.log(`Record for ${name} and book ${book} has been removed.`);
     } else {
         console.log(`Record for ${name} and book ${book} not found.`);
